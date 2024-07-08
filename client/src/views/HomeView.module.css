@@ -1,0 +1,49 @@
+.home {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  
+  .welcome {
+    width: 35%;
+    margin-left: 100px;
+    margin-top: 60px;
+    background-color: rgba(255, 255, 255, 0.233);
+    border-radius: 20px;
+    padding: 10px;
+    color: aliceblue;
+  }
+  
+  .welcome h1 {
+    font-style: italic;
+    font-size: 50px;
+    color: aliceblue;
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .welcome h2{
+    font-style: italic;
+    font-size: 27px;
+    color: aliceblue;
+    text-align: center;
+  }
+  
+  main .last-added {
+    background-color: rgba(255, 255, 255, 0.333);
+    width: 350px;
+    margin-right: 100px;
+    margin-top: 60px;
+    border-radius: 20px;
+    padding: 10px;
+  }
+  
+  
+  .no-post {
+    background-color: #032b47;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 20px;
+    margin-top: 50%;
+  }
