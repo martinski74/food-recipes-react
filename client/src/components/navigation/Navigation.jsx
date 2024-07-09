@@ -1,9 +1,10 @@
-import styles from './Navigation.module.css';
+import { useState } from 'react';
+import './Navigation.css';
 import { NavLink } from 'react-router-dom';
 
 const Navigation = () => {
   return (
-    <header className={styles.header}>
+    <header className='header'>
       <nav>
         <img
           width={80}

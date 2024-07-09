@@ -12,3 +12,8 @@
     border-top: 1px solid #2c3e50;
     padding-top: 30px;
   }
+  .catalog-heading {
+    color: white;
+    text-align: center;
+    font-size: xx-large;
+  }

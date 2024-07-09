@@ -21,40 +21,12 @@ const CatalogView = () => {
   }, []);
   return (
     <>
-      <h3>Recipe Catalog</h3>
+      <h3 className='catalog-heading'>Recipe Catalog</h3>
       <section className='recipes'>
         {recipes &&
           recipes.map((recipe) => (
             <RecipeItem key={recipe._id} recipe={recipe} />
           ))}
-
-        {/* <article className='recipe'>
-          <img src='https://static01.nyt.com/images/2021/02/14/dining/carbonara-horizontal/carbonara-horizontal-square640-v2.jpg' />
-          <h3>Spagetti Carbonara</h3>
-          <p>
-            A class Italian pasta dish made with eggs, cheese, pancetta, and
-            pepper.
-          </p>
-          <Link to='/catalog/1'>Read More</Link>
-        </article>
-        <article className='recipe'>
-          <img src='https://static01.nyt.com/images/2021/02/14/dining/carbonara-horizontal/carbonara-horizontal-square640-v2.jpg' />
-          <h3>Spagetti Carbonara</h3>
-          <p>
-            A classNameic Italian pasta dish made with eggs, cheese, pancetta,
-            and pepper.
-          </p>
-          <a href='#'>Read More</a>
-        </article>
-        <article className='recipe'>
-          <img src='https://static01.nyt.com/images/2021/02/14/dining/carbonara-horizontal/carbonara-horizontal-square640-v2.jpg' />
-          <h3>Spagetti Carbonara</h3>
-          <p>
-            A classNameic Italian pasta dish made with eggs, cheese, pancetta,
-            and pepper.
-          </p>
-          <a href='#'>Read More</a>
-        </article> */}
 
         {!recipes && <p className='no-post'>There are no recipes found yet!</p>}
       </section>

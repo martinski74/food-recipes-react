@@ -27,6 +27,8 @@
     font-size: 27px;
     color: aliceblue;
     text-align: center;
+    background: rgb(0, 0, 0, 0.5);
+    border-radius: 10px;
   }
   
   main .last-added {

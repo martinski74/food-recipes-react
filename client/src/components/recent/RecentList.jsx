@@ -20,7 +20,9 @@ const RecentList = () => {
   return (
     <>
       {items && items.map((item) => <SingleItem key={item._id} item={item} />)}
-      {!items && <p className={styles['no-post']}>There are no recipes!</p>}
+      {items.length === 0 && (
+        <p className={styles['no-post']}>There are no recipes!</p>
+      )}
     </>
   );
 };
