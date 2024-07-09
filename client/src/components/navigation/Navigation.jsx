@@ -1,27 +1,30 @@
 import styles from './Navigation.module.css';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Navigation = () => {
   return (
     <header className={styles.header}>
       <nav>
-        <div>
-          <Link to='/'>Home</Link>
-          <Link to='/catalog'>Dashboard</Link>
-          <Link to='/about'>About</Link>
-        </div>
+        <img
+          width={80}
+          height={40}
+          src='https://cdn.freebiesupply.com/logos/large/2x/my-recipes-logo-png-transparent.png'
+          alt=''
+        />
+
+        <NavLink to='/'>Home</NavLink>
+        <NavLink to='/catalog'>Dashboard</NavLink>
+        <NavLink to='/about'>About</NavLink>
 
         {/* <!-- Logged-in users --> */}
-        <div className='user'>
-          <Link to='/create'>Add Recipe</Link>
-          <Link to='/logout'>Logout</Link>
-        </div>
+
+        <NavLink to='/create'>Add Recipe</NavLink>
+        <NavLink to='/logout'>Logout</NavLink>
 
         {/* <!-- Guest users --> */}
-        <div className='guest'>
-          <Link to='/login'>Login</Link>
-          <Link to='/register'>Register</Link>
-        </div>
+
+        <NavLink to='/login'>Login</NavLink>
+        <NavLink to='/register'>Register</NavLink>
       </nav>
     </header>
   );

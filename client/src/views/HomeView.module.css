@@ -38,6 +38,13 @@
     padding: 10px;
   }
   
+  .last-added h4 {
+    color: white;
+    text-align: center;
+    margin-top: 0;
+    font-size: x-large;
+  }
+  
   
   .no-post {
     background-color: #032b47;

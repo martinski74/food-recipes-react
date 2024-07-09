@@ -1,17 +1,17 @@
 .header {
-    display: flex;
-    justify-content: space-between;
+    /* display: flex;
+    justify-content: space-between; */
     align-items: center;
-    padding: 1.5em;
+    padding: 1em;
     background: #5b1f51;
   }
   
   nav {
 
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 
-    margin-left: 25%;
+    /* margin-left: 25%; */
   }
   
   nav a {
@@ -21,7 +21,7 @@
   }
   
   .header a {
-    padding: 0 10px;
+    padding: 5px 10px;
     text-decoration: none;
     color: aliceblue;
   }
