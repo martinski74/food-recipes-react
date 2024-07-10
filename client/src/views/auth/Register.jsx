@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import styles from './Register.module.css';
 const Register = () => {
@@ -27,6 +28,8 @@ const Register = () => {
         password: '',
         repass: '',
       });
+
+      toast.success('Successfully registered!');
       navigate('/login');
     } catch (error) {
       console.log(error);

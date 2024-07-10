@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import styles from './Login.module.css';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const [user, setUser] = useState({});
@@ -26,6 +27,7 @@ const Login = () => {
 
       localStorage.setItem('token', data.accessToken);
       localStorage.setItem('user', data.username);
+      toast.success('Successfully logged in!');
       navigate('/catalog');
     } catch (error) {
       console.log(error);
