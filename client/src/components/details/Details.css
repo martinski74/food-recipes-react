@@ -78,6 +78,11 @@
     margin-left: 20px;
   }
   
+  .command a:hover {
+    background-color: #b1177d;
+    transform: scale(1.05);
+  }
+  
   .command p {
     background-color: #3498db;
     color: white;

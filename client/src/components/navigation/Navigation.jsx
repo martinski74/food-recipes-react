@@ -9,7 +9,7 @@ const Navigation = () => {
   let token = localStorage.getItem('token');
   const handleLogout = async () => {
     if (!token) {
-      toast.error('You are not logged in!');
+      // toast.error('You are not logged in!');
       return;
     }
     const res = await fetch('http://localhost:3030/users/logout', {

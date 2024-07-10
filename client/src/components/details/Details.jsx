@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import './Details.css';
 
@@ -41,8 +42,8 @@ const Details = () => {
 
           <h3>People Who Recommend: 0</h3>
           <div className='command'>
-            <a href='#'>Edit</a>
-            <a href='#'>Delete</a>
+            <Link to={'/edit/' + id}>Edit</Link>
+            <Link to={'/delete/' + id}>Delete</Link>
 
             {/* <p>You've already recommended this recipe!</p>
 

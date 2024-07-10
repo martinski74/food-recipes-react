@@ -23,10 +23,10 @@ const Login = () => {
         body: JSON.stringify(user),
       });
       const data = await response.json();
-      console.log(data);
+      console.log('login ', data);
 
       localStorage.setItem('token', data.accessToken);
-      localStorage.setItem('user', data.username);
+
       toast.success('Successfully logged in!');
       navigate('/catalog');
     } catch (error) {

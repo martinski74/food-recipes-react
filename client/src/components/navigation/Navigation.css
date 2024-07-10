@@ -29,7 +29,7 @@
     color: aliceblue;
   }
   
-  .header a:hover, span:hover {
+  .header a:hover, .header span:hover {
     color: rgb(202, 203, 204);
     cursor: pointer;
   }

@@ -13,6 +13,9 @@ import CatalogView from './views/catalog/CatalogView.jsx';
 import Details from './components/details/Details.jsx';
 import Register from './views/auth/Register.jsx';
 import Login from './views/auth/Login.jsx';
+import CreateRecipe from './components/recipes/CreateRecipe.jsx';
+import EditRecipe from './components/recipes/EditRecipe.jsx';
+import DeleteRecipe from './components/recipes/DeleteRecipe.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +26,10 @@ const router = createBrowserRouter(
       <Route path='catalog/:id' element={<Details />} />
       <Route path='register' element={<Register />} />
       <Route path='login' element={<Login />} />
+      <Route path='edit/:id' element={<EditRecipe />} />
+      <Route path='create' element={<CreateRecipe />} />
+      <Route path='delete/:id' element={<DeleteRecipe />} />
+
       <Route path='*' element={<NotFound />} />
     </Route>
   )

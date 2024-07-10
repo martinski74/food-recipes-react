@@ -23,6 +23,7 @@ const Register = () => {
         },
         body: JSON.stringify(input),
       });
+
       setInput({
         email: '',
         password: '',
