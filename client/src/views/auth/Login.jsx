@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import AuthContext from '../../context/auth-context';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import styles from './Login.module.css';
 import { toast } from 'react-toastify';
 
 const Login = () => {
+  const auth = useContext(AuthContext);
   const [user, setUser] = useState({});
   const navigate = useNavigate();
 
@@ -15,6 +17,10 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      if (!user.email || !user.password) {
+        toast.error('Please fill in all fields!');
+        return;
+      }
       const response = await fetch('http://localhost:3030/users/login', {
         method: 'POST',
         headers: {
@@ -23,9 +29,16 @@ const Login = () => {
         body: JSON.stringify(user),
       });
       const data = await response.json();
-      console.log('login ', data);
+      if (data.code === 403) {
+        toast.error(data.message);
+        return;
+      }
+      console.log('login ', auth);
+      auth.isLoggedIn = true;
+      auth.user = data.email;
 
       localStorage.setItem('token', data.accessToken);
+      localStorage.setItem('userId', data._id);
 
       toast.success('Successfully logged in!');
       navigate('/catalog');

@@ -4,12 +4,15 @@ import { toast } from 'react-toastify';
 import styles from './CreateRecipe.module.css';
 const CreateRecipe = () => {
   const navigate = useNavigate();
+  const userId = localStorage.getItem('userId');
   const [input, setInput] = useState({
     title: '',
     description: '',
     ingredients: '',
     instructions: '',
     image: '',
+    recommendList: [],
+    owner: { _id: userId },
   });
 
   const handleSubmit = async (e) => {

@@ -1,11 +1,15 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import AuthContext from '../../context/auth-context';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 
 import './Details.css';
 
 const Details = () => {
+  const auth = useContext(AuthContext);
   const [recipe, setRecipe] = useState(null);
+  const [isAuthor, setIsAuthor] = useState(null);
+  const [hasRecommended, setHasRecommended] = useState(false);
   const { id } = useParams();
   useEffect(() => {
     const fetchRecipe = async () => {
@@ -15,12 +19,47 @@ const Details = () => {
         );
         const data = await response.json();
         setRecipe(data);
+        setIsAuthor(data.owner._id === localStorage.getItem('userId'));
+        setHasRecommended(
+          data.recommendList.includes(localStorage.getItem('userId'))
+        );
       } catch (error) {
         console.log(error);
       }
     };
     fetchRecipe();
   }, []);
+
+  const recommendRecipe = async () => {
+    const updatedRecipe = {
+      ...recipe,
+      recommendList: [...recipe.recommendList, localStorage.getItem('userId')],
+    };
+    try {
+      const res = await fetch('http://localhost:3030/jsonstore/recipes/' + id, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Authorization': localStorage.getItem('token'),
+        },
+        body: JSON.stringify(updatedRecipe),
+      });
+      if (res.ok) {
+        setRecipe((prevRecipe) => ({
+          ...prevRecipe,
+          recommendList: [
+            ...recipe.recommendList,
+            localStorage.getItem('userId'),
+          ],
+        }));
+
+        setHasRecommended(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div className='content'>
@@ -40,14 +79,20 @@ const Details = () => {
 
           <h3>-----------------------------------------------------</h3>
 
-          <h3>People Who Recommend: 0</h3>
+          <h3>People Who Recommend: {recipe?.recommendList.length}</h3>
           <div className='command'>
-            <Link to={'/edit/' + id}>Edit</Link>
-            <Link to={'/delete/' + id}>Delete</Link>
+            {auth.isLoggedIn && isAuthor && (
+              <Link to={'/edit/' + id}>Edit</Link>
+            )}
+            {auth.isLoggedIn && isAuthor && (
+              <Link to={'/delete/' + id}>Delete</Link>
+            )}
 
-            {/* <p>You've already recommended this recipe!</p>
+            {hasRecommended && <p>You've already recommended this recipe!</p>}
 
-          <a href='#'>Recommend</a> */}
+            {!hasRecommended && !isAuthor && (
+              <span onClick={recommendRecipe}>Recommend</span>
+            )}
           </div>
         </article>
       </div>

@@ -1,11 +1,13 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AuthContext from '../../context/auth-context';
 import './Navigation.css';
 import { NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const Navigation = () => {
   const navigate = useNavigate();
+  const auth = useContext(AuthContext);
   let token = localStorage.getItem('token');
   const handleLogout = async () => {
     if (!token) {
@@ -18,12 +20,12 @@ const Navigation = () => {
         'X-Authorization': token,
       },
     });
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    localStorage.clear();
+    auth.isLoggedIn = false;
     setTimeout(() => {
       navigate('/');
       toast.success('Successfully logged out!');
-    }, 500);
+    }, 400);
   };
 
   return (
@@ -42,13 +44,16 @@ const Navigation = () => {
 
         {/* <!-- Logged-in users --> */}
 
-        <NavLink to='/create'>Add Recipe</NavLink>
-        <span onClick={handleLogout}>Logout</span>
+        {auth.isLoggedIn && <NavLink to='/create'>Add Recipe</NavLink>}
+        {auth.isLoggedIn && <span onClick={handleLogout}>Logout</span>}
+        {auth.isLoggedIn && (
+          <span>Welcome, {auth.user.substring(0, auth.user.indexOf('@'))}</span>
+        )}
 
         {/* <!-- Guest users --> */}
 
-        <NavLink to='/login'>Login</NavLink>
-        <NavLink to='/register'>Register</NavLink>
+        {!auth.isLoggedIn && <NavLink to='/login'>Login</NavLink>}
+        {!auth.isLoggedIn && <NavLink to='/register'>Register</NavLink>}
       </nav>
     </header>
   );

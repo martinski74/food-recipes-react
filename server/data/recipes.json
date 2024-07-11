@@ -6,7 +6,9 @@
         "description": "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
         "image": "https://static01.nyt.com/images/2021/02/14/dining/carbonara-horizontal/carbonara-horizontal-square640-v2.jpg",
         "recommendList": [],
-        "owner": {},
+        "owner": {
+            "_id": "7d4d564b-764f-4eb0-b6a7-1b050677f159"
+        },
         "_id": "283fbfc9-88d6-4247-8a58-852e49fcc1ad"
     },
 
@@ -17,7 +19,9 @@
         "description": "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
         "image": "https://www.wholesomeyum.com/wp-content/uploads/2020/11/wholesomeyum-Stir-Fry-Vegetables-15.jpg",
         "recommendList": [],
-        "owner": {},
+        "owner": {
+            "_id": "7d4d564b-764f-4eb0-b6a7-1b050677f159"
+        },
         "_id": "283fbfc9-88d6-4247-8a58-852e49fccqe4"
     },
     
@@ -28,7 +32,9 @@
            "description": "A golden risotto form and you have this moreish baked tomato, mozzarella and basil risotto.",
            "image": "https://images.immediate.co.uk/production/volatile/sites/30/2023/09/Soy-Baked-Potatoes-with-Tuna-Sriracha-Mayo-54e2611.jpg?quality=90&webp=true&resize=300,272",
            "recommendList": [],
-           "owner": {},
+           "owner": {
+            "_id": "7d4d564b-764f-4eb0-b6a7-1b050677f159"
+           },
            "_id": "66781964670095f4515f922a"
        }
 

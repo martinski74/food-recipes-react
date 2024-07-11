@@ -1,3 +1,7 @@
+.content {
+  padding-bottom: 3em;
+}
+
 .recipe-detail {
     background: white;
     padding: 2em;
@@ -77,14 +81,33 @@
     margin-bottom: 15px;
     margin-left: 20px;
   }
+  .command span {
+    background-color: #db34a2;
+    color: white;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    border-radius: 4px;
+    display: inline-block;
+    transition: background 0.3s, transform 0.3s;
+    font-weight: 700;
+    margin-bottom: 15px;
+    margin-left: 20px;
+  }
+  
+  .command span:hover{
+    background-color: #b1177d;
+    transform: scale(1.05);
+    cursor: pointer;
+  } 
   
   .command a:hover {
     background-color: #b1177d;
     transform: scale(1.05);
+    
   }
   
   .command p {
-    background-color: #3498db;
+    background-color: #db34a2;
     color: white;
     padding: 0.5em 1em;
     text-decoration: none;
