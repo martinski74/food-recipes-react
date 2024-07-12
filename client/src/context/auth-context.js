@@ -1,8 +1,8 @@
 import React from 'react';
 
 const AuthContext = React.createContext({
-  isLoggedIn: false,
-  user: null,
+  isLoggedIn: localStorage.getItem('token'),
+  user: localStorage.getItem('email'),
 });
 
 export default AuthContext;

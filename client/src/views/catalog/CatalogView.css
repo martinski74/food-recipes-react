@@ -18,3 +18,10 @@
     text-align: center;
     font-size: xx-large;
   }
+  .loader{
+    
+    position: absolute;
+    z-index: 55;
+    margin-left: 50%;
+    margin-top: 120px;
+  }

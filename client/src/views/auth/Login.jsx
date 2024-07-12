@@ -33,14 +33,15 @@ const Login = () => {
         toast.error(data.message);
         return;
       }
-      console.log('login ', auth);
+
       auth.isLoggedIn = true;
       auth.user = data.email;
 
       localStorage.setItem('token', data.accessToken);
       localStorage.setItem('userId', data._id);
+      localStorage.setItem('email', data.email);
 
-      toast.success('Successfully logged in!');
+      toast.success('Successfully logged in!', { autoClose: 1500 });
       navigate('/catalog');
     } catch (error) {
       console.log(error);

@@ -17,9 +17,14 @@ const RecentList = () => {
     };
     fetchItems();
   }, []);
+
+  const sortedItems = items.sort((a, b) => {
+    return new Date(b.createdAt) - new Date(a.createdAt);
+  });
   return (
     <>
-      {items && items.map((item) => <SingleItem key={item._id} item={item} />)}
+      {items &&
+        sortedItems.map((item) => <SingleItem key={item._id} item={item} />)}
       {items.length === 0 && (
         <p className={styles['no-post']}>There are no recipes!</p>
       )}

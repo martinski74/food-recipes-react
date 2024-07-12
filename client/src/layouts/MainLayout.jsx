@@ -8,10 +8,9 @@ import 'react-toastify/dist/ReactToastify.css';
 const MainLayout = () => {
   return (
     <>
-      <AuthContext.Provider value={{ isLoggedIn: false, user: null }}>
-        <Navigation />
-        <Outlet />
-      </AuthContext.Provider>
+      <Navigation />
+      <Outlet />
+
       <Footer />
       <ToastContainer />
     </>

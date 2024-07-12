@@ -63,3 +63,10 @@
     color: white;
     text-decoration: none;
   }
+  .form .error {
+    color: #ff0000;
+    font-size: 16px;
+    background-color: #e0c4c4;
+    margin-top: 0;
+    
+  }

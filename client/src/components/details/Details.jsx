@@ -1,3 +1,4 @@
+import { CircleSpinner } from 'react-spinners-kit';
 import React, { useState, useEffect, useContext } from 'react';
 import AuthContext from '../../context/auth-context';
 import { useParams } from 'react-router';
@@ -10,9 +11,11 @@ const Details = () => {
   const [recipe, setRecipe] = useState(null);
   const [isAuthor, setIsAuthor] = useState(null);
   const [hasRecommended, setHasRecommended] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { id } = useParams();
   useEffect(() => {
     const fetchRecipe = async () => {
+      setLoading(true);
       try {
         const response = await fetch(
           'http://localhost:3030/jsonstore/recipes/' + id
@@ -25,6 +28,8 @@ const Details = () => {
         );
       } catch (error) {
         console.log(error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchRecipe();
@@ -62,40 +67,51 @@ const Details = () => {
 
   return (
     <>
-      <div className='content'>
-        <article className='recipe-detail'>
-          <img src={recipe?.image} alt='Spaghetti Carbonara' />
-
-          <h2>{recipe?.title}</h2>
-          <p>{recipe?.description}</p>
-          <h3>-----------------------------------------------------</h3>
-          <h3>Ingredients:</h3>
-          <p>{recipe?.ingredients}</p>
-
-          <h3>-----------------------------------------------------</h3>
-
-          <h3>Instructions:</h3>
-          <p>{recipe?.instructions}</p>
-
-          <h3>-----------------------------------------------------</h3>
-
-          <h3>People Who Recommend: {recipe?.recommendList.length}</h3>
-          <div className='command'>
-            {auth.isLoggedIn && isAuthor && (
-              <Link to={'/edit/' + id}>Edit</Link>
-            )}
-            {auth.isLoggedIn && isAuthor && (
-              <Link to={'/delete/' + id}>Delete</Link>
-            )}
-
-            {hasRecommended && <p>You've already recommended this recipe!</p>}
-
-            {!hasRecommended && !isAuthor && (
-              <span onClick={recommendRecipe}>Recommend</span>
-            )}
+      <AuthContext.Provider value={auth}>
+        {loading ? (
+          <div className='loader'>
+            <CircleSpinner size={130} color='#00bfff' loading={loading} />
           </div>
-        </article>
-      </div>
+        ) : (
+          <div className='content'>
+            <article className='recipe-detail'>
+              <img src={recipe?.image} alt='Spaghetti Carbonara' />
+
+              <h2>{recipe?.title}</h2>
+              <p>{recipe?.description}</p>
+              <h3>-----------------------------------------------------</h3>
+              <h3>Ingredients:</h3>
+              <p>{recipe?.ingredients}</p>
+
+              <h3>-----------------------------------------------------</h3>
+
+              <h3>Instructions:</h3>
+              <p>{recipe?.instructions}</p>
+
+              <p>Created at: {recipe?.createdAt.slice(0, 10)} </p>
+              <h3>-----------------------------------------------------</h3>
+
+              <h3>People Who Recommend: {recipe?.recommendList.length}</h3>
+              <div className='command'>
+                {auth.isLoggedIn && isAuthor && (
+                  <Link to={'/edit/' + id}>Edit</Link>
+                )}
+                {auth.isLoggedIn && isAuthor && (
+                  <Link to={'/delete/' + id}>Delete</Link>
+                )}
+
+                {hasRecommended && (
+                  <p>You've already recommended this recipe!</p>
+                )}
+
+                {!hasRecommended && !isAuthor && auth.isLoggedIn && (
+                  <span onClick={recommendRecipe}>Recommend</span>
+                )}
+              </div>
+            </article>
+          </div>
+        )}
+      </AuthContext.Provider>
     </>
   );
 };

@@ -13,6 +13,7 @@ const CreateRecipe = () => {
     image: '',
     recommendList: [],
     owner: { _id: userId },
+    createdAt: new Date().toISOString(),
   });
 
   const handleSubmit = async (e) => {

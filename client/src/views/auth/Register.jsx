@@ -7,6 +7,7 @@ import styles from './Register.module.css';
 const Register = () => {
   const navigate = useNavigate();
   const [input, setInput] = useState({});
+  const [errors, setErrors] = useState({});
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,6 +41,7 @@ const Register = () => {
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
+
   return (
     <main className={styles.register}>
       <section id='register'>
@@ -51,21 +53,22 @@ const Register = () => {
               name='email'
               placeholder='email'
               onChange={handleChange}
-              // value={input.email}
+              value={input.email}
             />
+            {/* {errors.email && <p className={styles.error}>{errors.email}</p>} */}
             <input
               type='password'
               name='password'
               placeholder='password'
               onChange={handleChange}
-              // value={input.password}
+              value={input.password}
             />
             <input
               type='password'
               name='repass'
               placeholder='repeat password'
               onChange={handleChange}
-              // value={input.repass}
+              value={input.repass}
             />
             <button type='submit'>Register</button>
             <p className={styles.message}>

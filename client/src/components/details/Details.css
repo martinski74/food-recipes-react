@@ -118,3 +118,9 @@
     margin-top: 1em;
     margin-left: 20px;
   }
+  .loader{
+    position: absolute;
+    z-index: 55;
+    margin-left: 50%;
+    margin-top: 120px;
+  }
