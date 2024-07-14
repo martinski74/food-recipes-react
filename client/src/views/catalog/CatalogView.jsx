@@ -1,4 +1,4 @@
-import { CircleSpinner } from 'react-spinners-kit';
+// import { CircleSpinner } from 'react-spinners-kit';
 import RecipeItem from '../../components/recipes/RecipeItem';
 import React, { useState, useEffect } from 'react';
 import './CatalogView.css';
@@ -27,7 +27,7 @@ const CatalogView = () => {
     <>
       <h3 className='catalog-heading'>Recipe Catalog</h3>
       <div className='loader'>
-        <CircleSpinner size={130} color='#00bfff' loading={loading} />
+        {/* <CircleSpinner size={130} color='#00bfff' loading={loading} /> */}
       </div>
       <section className='recipes'>
         {recipes &&

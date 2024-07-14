@@ -1,4 +1,3 @@
-import { CircleSpinner } from 'react-spinners-kit';
 import React, { useState, useEffect, useContext } from 'react';
 import AuthContext from '../../context/auth-context';
 import { useParams } from 'react-router';
@@ -70,7 +69,7 @@ const Details = () => {
       <AuthContext.Provider value={auth}>
         {loading ? (
           <div className='loader'>
-            <CircleSpinner size={130} color='#00bfff' loading={loading} />
+            {/* <CircleSpinner size={130} color='#00bfff' loading={loading} /> */}
           </div>
         ) : (
           <div className='content'>
