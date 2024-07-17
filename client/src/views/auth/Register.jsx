@@ -25,6 +25,9 @@ const Register = () => {
         body: JSON.stringify(input),
       });
 
+      if (!response.ok) {
+        throw new Error('Missing credentials');
+      }
       setInput({
         email: '',
         password: '',
@@ -34,7 +37,7 @@ const Register = () => {
       toast.success('Successfully registered!');
       navigate('/login');
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
 
@@ -53,7 +56,7 @@ const Register = () => {
               name='email'
               placeholder='email'
               onChange={handleChange}
-              value={input.email}
+              // value={input.email}
             />
             {/* {errors.email && <p className={styles.error}>{errors.email}</p>} */}
             <input
@@ -61,14 +64,14 @@ const Register = () => {
               name='password'
               placeholder='password'
               onChange={handleChange}
-              value={input.password}
+              // value={input.password}
             />
             <input
               type='password'
               name='repass'
               placeholder='repeat password'
               onChange={handleChange}
-              value={input.repass}
+              // value={input.repass}
             />
             <button type='submit'>Register</button>
             <p className={styles.message}>

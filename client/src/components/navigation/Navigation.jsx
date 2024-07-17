@@ -37,8 +37,8 @@ const Navigation = () => {
       <header className='header'>
         <nav>
           <img
-            width={80}
-            height={40}
+            width={90}
+            // height={40}
             src='https://cdn.freebiesupply.com/logos/large/2x/my-recipes-logo-png-transparent.png'
             alt=''
           />
@@ -52,7 +52,7 @@ const Navigation = () => {
           {auth.isLoggedIn && <NavLink to='/create'>Add Recipe</NavLink>}
           {auth.isLoggedIn && <span onClick={handleLogout}>Logout</span>}
           {auth.isLoggedIn && (
-            <span>Welcome, {email.substring(0, email?.indexOf('@'))}</span>
+            <span>Welcome, {email?.substring(0, email?.indexOf('@'))}</span>
           )}
 
           {/* <!-- Guest users --> */}
