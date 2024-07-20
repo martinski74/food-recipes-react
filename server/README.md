@@ -1,1 +1,5 @@
-## Run `node server.js` to start server!
+### Run server 
+```
+node server.js
+```
+
