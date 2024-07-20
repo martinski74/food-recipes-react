@@ -1,6 +1,17 @@
-# React + Vite
+## Project setup
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+```
+npm install
+```
 
-### Install all dependecies
-``` npm install ```
+### Compiles and hot-reloads for development
+
+```
+npm run dev
+```
+
+### Compiles and minifies for production
+
+```
+npm run build
+```
