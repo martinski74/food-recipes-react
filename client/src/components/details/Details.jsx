@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import AuthContext from '../../context/auth-context';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import { Oval } from 'react-loader-spinner';
 
 import './Details.css';
 
@@ -68,8 +69,15 @@ const Details = () => {
     <>
       <AuthContext.Provider value={auth}>
         {loading ? (
-          <div className='loader'>
-            {/* <CircleSpinner size={130} color='#00bfff' loading={loading} /> */}
+          <div className='loader-details'>
+            <Oval
+              visible={true}
+              height='100'
+              width='100'
+              secondaryColor='#5b1f51'
+              color='#bb86fc'
+              strokeWidth='3'
+            />
           </div>
         ) : (
           <div className='content'>

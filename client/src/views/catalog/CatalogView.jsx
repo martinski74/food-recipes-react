@@ -31,7 +31,8 @@ const CatalogView = () => {
           visible={loading}
           height='100'
           width='100'
-          color='#4fa94d'
+          secondaryColor='#5b1f51'
+          color='#bb86fc'
           strokeWidth='3'
         />
       </div>

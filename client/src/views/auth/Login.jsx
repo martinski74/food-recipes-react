@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 const Login = () => {
   const auth = useContext(AuthContext);
   const [user, setUser] = useState({});
+  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -16,11 +17,12 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const isValid = validateForm();
+    if (!isValid) {
+      return;
+    }
     try {
-      if (!user.email || !user.password) {
-        toast.error('Please fill in all fields!');
-        return;
-      }
       const response = await fetch('http://localhost:3030/users/login', {
         method: 'POST',
         headers: {
@@ -47,24 +49,47 @@ const Login = () => {
       console.log(error);
     }
   };
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!user.email) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(user.email)) {
+      newErrors.email = 'Email is invalid';
+    }
+
+    if (!user.password) {
+      newErrors.password = 'Password is required';
+    } else if (user.password.length < 3) {
+      newErrors.password = 'Password must be at least 3 characters';
+    }
+
+    setErrors(newErrors);
+
+    return Object.keys(newErrors).length === 0;
+  };
   return (
     <main className={styles.login}>
       <section id='login'>
         <div className={styles.form}>
           <h2>Login</h2>
-          <form className={styles['login-form']} onSubmit={handleSubmit}>
+          <form className={styles['login']} onSubmit={handleSubmit}>
             <input
               type='text'
               name='email'
               placeholder='email'
               onChange={handleChange}
             />
+            {errors.email && <p className={styles.error}>{errors.email}</p>}
             <input
               type='password'
               name='password'
               placeholder='password'
               onChange={handleChange}
             />
+            {errors.password && (
+              <p className={styles.error}>{errors.password}</p>
+            )}
             <button type='submit'>Login</button>
             <p className={styles.message}>
               Not registered? <Link to={'/register'}>Create an account</Link>

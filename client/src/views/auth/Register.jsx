@@ -9,14 +9,40 @@ const Register = () => {
   const [input, setInput] = useState({});
   const [errors, setErrors] = useState({});
 
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!input.email) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(input.email)) {
+      newErrors.email = 'Email is invalid';
+    }
+
+    if (!input.password) {
+      newErrors.password = 'Password is required';
+    } else if (input.password.length < 3) {
+      newErrors.password = 'Password must be at least 3 characters';
+    }
+
+    if (!input.repass) {
+      newErrors.repass = 'Repeat password is required';
+    } else if (input.repass !== input.password) {
+      newErrors.repass = 'Passwords do not match';
+    }
+
+    setErrors(newErrors);
+
+    return Object.keys(newErrors).length === 0;
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const isValid = validateForm();
+
+    if (!isValid) {
+      return;
+    }
 
     try {
-      if (input.password !== input.repass) {
-        alert('passwords do not match');
-        return;
-      }
       const response = await fetch('http://localhost:3030/users/register', {
         method: 'POST',
         headers: {
@@ -25,9 +51,6 @@ const Register = () => {
         body: JSON.stringify(input),
       });
 
-      if (!response.ok) {
-        throw new Error('Missing credentials');
-      }
       setInput({
         email: '',
         password: '',
@@ -50,29 +73,36 @@ const Register = () => {
       <section id='register'>
         <div className={styles.form}>
           <h2>Register</h2>
-          <form className='login-form' onSubmit={handleSubmit}>
+          <form className={styles['login-form']} onSubmit={handleSubmit}>
             <input
               type='text'
               name='email'
               placeholder='email'
               onChange={handleChange}
-              // value={input.email}
+              defaultValue={input.email}
             />
-            {/* {errors.email && <p className={styles.error}>{errors.email}</p>} */}
+
+            {errors.email && <p className={styles.error}>{errors.email}</p>}
+
             <input
               type='password'
               name='password'
               placeholder='password'
               onChange={handleChange}
-              // value={input.password}
+              defaultValue={input.password}
             />
+            {errors.password && (
+              <p className={styles.error}>{errors.password}</p>
+            )}
             <input
               type='password'
               name='repass'
               placeholder='repeat password'
               onChange={handleChange}
-              // value={input.repass}
+              defaultValue={input.repass}
             />
+
+            {errors.repass && <p className={styles.error}>{errors.repass}</p>}
             <button type='submit'>Register</button>
             <p className={styles.message}>
               Already registered? <Link to={'/login'}>Login</Link>
