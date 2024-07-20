@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import * as Yup from 'yup';
+
 import styles from './CreateRecipe.module.css';
 const CreateRecipe = () => {
   const navigate = useNavigate();
   const userId = localStorage.getItem('userId');
+  const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
     title: '',
     description: '',
@@ -16,24 +19,37 @@ const CreateRecipe = () => {
     createdAt: new Date().toISOString(),
   });
 
+  let validationSchema = Yup.object({
+    title: Yup.string().required('Title is required'),
+    description: Yup.string().required('Description is required'),
+    ingredients: Yup.string().required('Ingredients is required'),
+    instructions: Yup.string().required('Instructions is required'),
+    image: Yup.string().url().required('Image is required'),
+  });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await fetch('http://localhost:3030/jsonstore/recipes', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(input),
+      await validationSchema.validate(input, {
+        abortEarly: false,
       });
-      if (res.ok) {
-        toast.success('Successfully created recipe!');
-        navigate('/catalog');
-      } else {
-        toast.error(res.statusText);
-      }
-      console.log(res);
+      console.log(input);
+
+      // const res = await fetch('http://localhost:3030/jsonstore/recipes', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(input),
+      // });
+      // if (res.ok) {
+      //   toast.success('Successfully created recipe!');
+      //   navigate('/catalog');
+      // } else {
+      //   toast.error(res.statusText);
+      // }
+      // console.log(res);
 
       setInput({
         title: '',
@@ -43,7 +59,12 @@ const CreateRecipe = () => {
         image: '',
       });
     } catch (error) {
-      console.log('Error ', error);
+      const newErrors = {};
+
+      error.inner.map((err) => {
+        newErrors[err.path] = err.message;
+      });
+      setErrors(newErrors);
     }
   };
 
@@ -63,6 +84,7 @@ const CreateRecipe = () => {
               onChange={handleChange}
               value={input.title}
             />
+            {errors.title && <p className={styles.error}>{errors.title}</p>}
             <textarea
               type='text'
               name='description'
@@ -70,6 +92,9 @@ const CreateRecipe = () => {
               onChange={handleChange}
               value={input.description}
             ></textarea>
+            {errors.description && (
+              <p className={styles.error}>{errors.description}</p>
+            )}
             <textarea
               type='text'
               name='ingredients'
@@ -77,6 +102,9 @@ const CreateRecipe = () => {
               onChange={handleChange}
               value={input.ingredients}
             ></textarea>
+            {errors.ingredients && (
+              <p className={styles.error}>{errors.ingredients}</p>
+            )}
             <textarea
               type='text'
               name='instructions'
@@ -84,6 +112,9 @@ const CreateRecipe = () => {
               onChange={handleChange}
               value={input.instructions}
             ></textarea>
+            {errors.instructions && (
+              <p className={styles.error}>{errors.instructions}</p>
+            )}
             <input
               type='url'
               name='image'
@@ -91,6 +122,7 @@ const CreateRecipe = () => {
               onChange={handleChange}
               value={input.image}
             />
+            {errors.image && <p className={styles.error}>{errors.image}</p>}
 
             <button type='submit'>Create Recipe</button>
           </form>

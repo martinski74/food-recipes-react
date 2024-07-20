@@ -74,6 +74,10 @@
     clear: both;
   }
   
+  .form .error {
+    color: red;
+    margin: -7px 10px 8px 10px;
+  }
  
  
   
