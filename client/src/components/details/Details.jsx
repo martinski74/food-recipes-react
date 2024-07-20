@@ -95,10 +95,10 @@ const Details = () => {
               <h3>Instructions:</h3>
               <p>{recipe?.instructions}</p>
 
-              <p>Created at: {recipe?.createdAt.slice(0, 10)} </p>
+              <p>Created at: {recipe?.createdAt?.slice(0, 10)} </p>
               <h3>-----------------------------------------------------</h3>
 
-              <h3>People Who Recommend: {recipe?.recommendList.length}</h3>
+              <h3>People Who Recommend: {recipe?.recommendList?.length}</h3>
               <div className='command'>
                 {auth.isLoggedIn && isAuthor && (
                   <Link to={'/edit/' + id}>Edit</Link>

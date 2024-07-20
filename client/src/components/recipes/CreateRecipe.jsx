@@ -14,9 +14,6 @@ const CreateRecipe = () => {
     ingredients: '',
     instructions: '',
     image: '',
-    recommendList: [],
-    owner: { _id: userId },
-    createdAt: new Date().toISOString(),
   });
 
   let validationSchema = Yup.object({
@@ -34,22 +31,26 @@ const CreateRecipe = () => {
       await validationSchema.validate(input, {
         abortEarly: false,
       });
-      console.log(input);
-
-      // const res = await fetch('http://localhost:3030/jsonstore/recipes', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(input),
-      // });
-      // if (res.ok) {
-      //   toast.success('Successfully created recipe!');
-      //   navigate('/catalog');
-      // } else {
-      //   toast.error(res.statusText);
-      // }
-      // console.log(res);
+      let payload = {
+        ...input,
+        recommendList: [],
+        owner: { _id: userId },
+        createdAt: new Date().toISOString(),
+      };
+      const res = await fetch('http://localhost:3030/jsonstore/recipes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+      if (res.ok) {
+        toast.success('Successfully created recipe!');
+        navigate('/catalog');
+      } else {
+        toast.error(res.statusText);
+      }
+      console.log(res);
 
       setInput({
         title: '',
