@@ -75,6 +75,7 @@ const Register = () => {
           <h2>Register</h2>
           <form className={styles['login-form']} onSubmit={handleSubmit}>
             <input
+              style={errors.email ? { border: '2px solid red' } : {}}
               type='text'
               name='email'
               placeholder='email'
@@ -85,6 +86,7 @@ const Register = () => {
             {errors.email && <p className={styles.error}>{errors.email}</p>}
 
             <input
+              style={errors.password ? { border: '2px solid red' } : {}}
               type='password'
               name='password'
               placeholder='password'
@@ -95,6 +97,7 @@ const Register = () => {
               <p className={styles.error}>{errors.password}</p>
             )}
             <input
+              style={errors.repass ? { border: '2px solid red' } : {}}
               type='password'
               name='repass'
               placeholder='repeat password'

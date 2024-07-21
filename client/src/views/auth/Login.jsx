@@ -75,6 +75,7 @@ const Login = () => {
           <h2>Login</h2>
           <form className={styles['login']} onSubmit={handleSubmit}>
             <input
+              style={errors.email ? { border: '2px solid red' } : {}}
               type='text'
               name='email'
               placeholder='email'
@@ -82,6 +83,7 @@ const Login = () => {
             />
             {errors.email && <p className={styles.error}>{errors.email}</p>}
             <input
+              style={errors.password ? { border: '2px solid red' } : {}}
               type='password'
               name='password'
               placeholder='password'
