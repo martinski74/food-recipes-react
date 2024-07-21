@@ -40,7 +40,7 @@ const EditRecipe = () => {
       });
 
       if (res.ok) {
-        toast.success('Successfully updated recipe!');
+        toast.success('Successfully updated recipe!', { autoClose: 2000 });
         navigate('/catalog');
       } else {
         toast.error(res.statusText);

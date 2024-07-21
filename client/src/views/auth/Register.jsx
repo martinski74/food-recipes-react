@@ -57,7 +57,7 @@ const Register = () => {
         repass: '',
       });
 
-      toast.success('Successfully registered!');
+      toast.success('Successfully registered!', { autoClose: 2000 });
       navigate('/login');
     } catch (error) {
       console.log(error.message);

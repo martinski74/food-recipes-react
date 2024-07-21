@@ -44,8 +44,8 @@ const Navigation = () => {
           />
 
           <NavLink to='/'>Home</NavLink>
-          <NavLink to='/catalog'>Dashboard</NavLink>
-          <NavLink to='/about'>About</NavLink>
+          <NavLink to='/catalog'>Recipe Catalog</NavLink>
+          <NavLink to='/serach'>Search</NavLink>
 
           {/* <!-- Logged-in users --> */}
 

@@ -45,7 +45,7 @@ const CreateRecipe = () => {
         body: JSON.stringify(payload),
       });
       if (res.ok) {
-        toast.success('Successfully created recipe!');
+        toast.success('Successfully created recipe!', { autoClose: 2000 });
         navigate('/catalog');
       } else {
         toast.error(res.statusText);

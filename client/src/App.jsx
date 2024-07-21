@@ -7,7 +7,7 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom';
 import HomeView from './views/HomeView.jsx';
-import AboutView from './views/AboutView.jsx';
+import SearchView from './views/SearchView.jsx';
 import NotFound from './views/notFound/404.jsx';
 import MainLayout from './layouts/MainLayout.jsx';
 import CatalogView from './views/catalog/CatalogView.jsx';
@@ -43,7 +43,7 @@ const App = () => {
     <Routes>
       <Route path='/' element={<MainLayout />}>
         <Route index element={<HomeView />} />
-        <Route path='about' element={<AboutView />} />
+        <Route path='serach' element={<SearchView />} />
         <Route path='catalog' element={<CatalogView />} />
         <Route path='catalog/:id' element={<Details />} />
         <Route path='register' element={<Register />} />

@@ -36,7 +36,7 @@ const DeleteRecipe = () => {
       });
 
       if (res.ok) {
-        toast.success('Successfully deleted recipe!');
+        toast.success('Successfully deleted recipe!', { autoClose: 2000 });
         navigate('/catalog');
       } else {
         toast.error(res.statusText);
