@@ -17,6 +17,7 @@ import Login from './views/auth/Login.jsx';
 import CreateRecipe from './components/recipes/CreateRecipe.jsx';
 import EditRecipe from './components/recipes/EditRecipe.jsx';
 import DeleteRecipe from './components/recipes/DeleteRecipe.jsx';
+import ProtectedRoutes from './util/ProtectedRoutes.jsx';
 import AuthContext from './context/auth-context.js';
 import { useContext } from 'react';
 
@@ -45,13 +46,15 @@ const App = () => {
         <Route index element={<HomeView />} />
         <Route path='serach' element={<SearchView />} />
         <Route path='catalog' element={<CatalogView />} />
-        <Route path='catalog/:id' element={<Details />} />
+        <Route element={<ProtectedRoutes />}>
+          <Route path='create' element={<CreateRecipe />} />
+          <Route path='catalog/:id' element={<Details />} />
+          <Route path='edit/:id' element={<EditRecipe />} />
+          <Route path='delete/:id' element={<DeleteRecipe />} />
+        </Route>
         <Route path='register' element={<Register />} />
         <Route path='login' element={<Login />} />
-        <Route path='edit/:id' element={<EditRecipe />} />
-        <Route path='create' element={<CreateRecipe />} />
 
-        <Route path='delete/:id' element={<DeleteRecipe />} />
         <Route path='*' element={<NotFound />} />
       </Route>
     </Routes>
