@@ -65,7 +65,9 @@ const SearchView = () => {
           recipes.map((recipe) => (
             <RecipeItem key={recipe._id} recipe={recipe} />
           ))}
-        {/* <p className={styles['no-match']}>There are no recipes found yet!</p> */}
+        {recipes.length === 0 && (
+          <p className={styles['no-match']}>There are no recipes found yet!</p>
+        )}
       </div>
     </section>
   );

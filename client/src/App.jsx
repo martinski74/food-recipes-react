@@ -46,9 +46,10 @@ const App = () => {
         <Route index element={<HomeView />} />
         <Route path='serach' element={<SearchView />} />
         <Route path='catalog' element={<CatalogView />} />
+        <Route path='catalog/:id' element={<Details />} />
+        {/* Rotected routes  only for logged in users */}
         <Route element={<ProtectedRoutes />}>
           <Route path='create' element={<CreateRecipe />} />
-          <Route path='catalog/:id' element={<Details />} />
           <Route path='edit/:id' element={<EditRecipe />} />
           <Route path='delete/:id' element={<DeleteRecipe />} />
         </Route>
