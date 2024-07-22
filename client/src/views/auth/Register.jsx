@@ -90,6 +90,7 @@ const Register = () => {
               type='password'
               name='password'
               placeholder='password'
+              autoComplete='on'
               onChange={handleChange}
               defaultValue={input.password}
             />
@@ -101,6 +102,7 @@ const Register = () => {
               type='password'
               name='repass'
               placeholder='repeat password'
+              autoComplete='on'
               onChange={handleChange}
               defaultValue={input.repass}
             />

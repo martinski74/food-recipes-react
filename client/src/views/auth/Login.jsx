@@ -87,6 +87,7 @@ const Login = () => {
               type='password'
               name='password'
               placeholder='password'
+              autoComplete='on'
               onChange={handleChange}
             />
             {errors.password && (
