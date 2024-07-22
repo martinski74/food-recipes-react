@@ -66,7 +66,7 @@ const SearchView = () => {
             <RecipeItem key={recipe._id} recipe={recipe} />
           ))}
         {recipes.length === 0 && (
-          <p className={styles['no-match']}>There are no recipes found yet!</p>
+          <p className={styles['no-match']}>There are no recipes found!</p>
         )}
       </div>
     </section>

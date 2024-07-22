@@ -51,6 +51,10 @@ const Register = () => {
         body: JSON.stringify(input),
       });
 
+      if (!response.ok && response.status == 409) {
+        throw new Error('A user with the same email already exists');
+      }
+
       setInput({
         email: '',
         password: '',
@@ -60,7 +64,7 @@ const Register = () => {
       toast.success('Successfully registered!', { autoClose: 2000 });
       navigate('/login');
     } catch (error) {
-      console.log(error.message);
+      toast.error(error.message, { autoClose: 2000 });
     }
   };
 
