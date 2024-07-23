@@ -9,7 +9,7 @@ const Navigation = () => {
   const navigate = useNavigate();
   const auth = useContext(AuthContext);
   let token = localStorage.getItem('token');
-  const email = localStorage.getItem('email');
+  const username = localStorage.getItem('email');
   const handleLogout = async () => {
     if (!token) {
       // toast.error('You are not logged in!');
@@ -33,7 +33,7 @@ const Navigation = () => {
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn: token, user: email }}>
+    <AuthContext.Provider value={{ isLoggedIn: token, user: username }}>
       <header className='header'>
         <nav>
           <img
@@ -51,9 +51,7 @@ const Navigation = () => {
 
           {auth.isLoggedIn && <NavLink to='/create'>Add Recipe</NavLink>}
           {auth.isLoggedIn && <span onClick={handleLogout}>Logout</span>}
-          {auth.isLoggedIn && (
-            <span>Welcome, {email?.substring(0, email?.indexOf('@'))}</span>
-          )}
+          {auth.isLoggedIn && <span>Welcome, {auth.user}</span>}
 
           {/* <!-- Guest users --> */}
 

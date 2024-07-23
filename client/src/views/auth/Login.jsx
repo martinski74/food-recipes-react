@@ -36,12 +36,13 @@ const Login = () => {
         return;
       }
 
-      auth.isLoggedIn = true;
-      auth.user = data.email;
-
       localStorage.setItem('token', data.accessToken);
       localStorage.setItem('userId', data._id);
       localStorage.setItem('email', data.email);
+      localStorage.setItem('username', data.username);
+
+      auth.isLoggedIn = true;
+      auth.user = data.username;
 
       toast.success('Successfully logged in!', { autoClose: 1500 });
       navigate('/catalog');

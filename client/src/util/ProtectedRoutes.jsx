@@ -6,10 +6,10 @@ const ProtectedRoutes = () => {
   const { isLoggedIn } = useContext(AuthContext);
   const location = useLocation();
 
-  if (!isLoggedIn) {
-    return <Navigate to='/login' state={{ from: location }} replace />;
-  }
-
-  return <Outlet />;
+  return !isLoggedIn ? (
+    <Navigate to='/login' state={{ from: location }} replace />
+  ) : (
+    <Outlet />
+  );
 };
 export default ProtectedRoutes;

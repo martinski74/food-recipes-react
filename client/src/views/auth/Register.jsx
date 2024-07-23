@@ -56,6 +56,7 @@ const Register = () => {
       }
 
       setInput({
+        username: '',
         email: '',
         password: '',
         repass: '',
@@ -78,6 +79,14 @@ const Register = () => {
         <div className={styles.form}>
           <h2>Register</h2>
           <form className={styles['login-form']} onSubmit={handleSubmit}>
+            <input
+              style={errors.username ? { border: '2px solid red' } : {}}
+              type='text'
+              name='username'
+              placeholder='username'
+              onChange={handleChange}
+              defaultValue={input.username}
+            />
             <input
               style={errors.email ? { border: '2px solid red' } : {}}
               type='text'

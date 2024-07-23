@@ -109,7 +109,7 @@ const CreateRecipe = () => {
             <textarea
               type='text'
               name='instructions'
-              placeholder='instructions'
+              placeholder='Instructions'
               onChange={handleChange}
               value={input.instructions}
             ></textarea>
