@@ -136,7 +136,7 @@ const Register = () => {
 
             {errors.repass && <p className={styles.error}>{errors.repass}</p>}
 
-            <label htmlFor='userImage'>Upload Image</label>
+            <label htmlFor='userImage'>Upload profile image (optional)</label>
             <input
               type='file'
               name='userImage'

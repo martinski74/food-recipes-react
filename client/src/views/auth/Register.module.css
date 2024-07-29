@@ -71,3 +71,8 @@
     margin-bottom: 5px;
     
   }
+  .form label{
+    cursor: pointer;
+    color: aliceblue;
+    font-size: 15px;
+}
