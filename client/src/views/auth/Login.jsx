@@ -40,6 +40,9 @@ const Login = () => {
       localStorage.setItem('userId', data._id);
       localStorage.setItem('email', data.email);
       localStorage.setItem('username', data.username);
+      if (data.profilePicture) {
+        localStorage.setItem('profilePicture', data.profilePicture);
+      }
 
       auth.isLoggedIn = true;
       auth.user = data.username;

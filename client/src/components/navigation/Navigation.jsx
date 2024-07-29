@@ -9,7 +9,8 @@ const Navigation = () => {
   const navigate = useNavigate();
   const auth = useContext(AuthContext);
   let token = localStorage.getItem('token');
-  const username = localStorage.getItem('email');
+  const userId = localStorage.getItem('userId');
+  const username = localStorage.getItem('username');
   const handleLogout = async () => {
     if (!token) {
       // toast.error('You are not logged in!');
@@ -51,7 +52,9 @@ const Navigation = () => {
 
           {auth.isLoggedIn && <NavLink to='/create'>Add Recipe</NavLink>}
           {auth.isLoggedIn && <span onClick={handleLogout}>Logout</span>}
-          {auth.isLoggedIn && <span>Welcome, {auth.user}</span>}
+          {auth.isLoggedIn && (
+            <NavLink to={`/user/${userId}`}>Welcome, {auth.user}</NavLink>
+          )}
 
           {/* <!-- Guest users --> */}
 

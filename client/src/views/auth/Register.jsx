@@ -12,6 +12,10 @@ const Register = () => {
   const validateForm = () => {
     const newErrors = {};
 
+    if (!input.username) {
+      newErrors.username = 'Username is required';
+    }
+
     if (!input.email) {
       newErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(input.email)) {
@@ -72,6 +76,12 @@ const Register = () => {
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
+  const handleUpload = (e) => {
+    setInput({
+      ...input,
+      profilePicture: URL.createObjectURL(e.target.files[0]),
+    });
+  };
 
   return (
     <main className={styles.register}>
@@ -87,9 +97,13 @@ const Register = () => {
               onChange={handleChange}
               defaultValue={input.username}
             />
+
+            {errors.username && (
+              <p className={styles.error}>{errors.username}</p>
+            )}
             <input
               style={errors.email ? { border: '2px solid red' } : {}}
-              type='text'
+              type='email'
               name='email'
               placeholder='email'
               onChange={handleChange}
@@ -121,6 +135,16 @@ const Register = () => {
             />
 
             {errors.repass && <p className={styles.error}>{errors.repass}</p>}
+
+            <label htmlFor='userImage'>Upload Image</label>
+            <input
+              type='file'
+              name='userImage'
+              id='userImage'
+              placeholder='Upload Image'
+              onChange={handleUpload}
+            />
+
             <button type='submit'>Register</button>
             <p className={styles.message}>
               Already registered? <Link to={'/login'}>Login</Link>
