@@ -9,7 +9,7 @@ const RecentList = () => {
       try {
         const response = await fetch('http://localhost:3030/jsonstore/recipes');
         const data = await response.json();
-        const result = Object.values(data).slice(0, 3);
+        const result = Object.values(data);
         setItems(result);
       } catch (error) {
         console.log(error);
@@ -24,7 +24,9 @@ const RecentList = () => {
   return (
     <>
       {items &&
-        sortedItems.map((item) => <SingleItem key={item._id} item={item} />)}
+        sortedItems
+          .slice(0, 3)
+          .map((item) => <SingleItem key={item._id} item={item} />)}
       {items.length === 0 && (
         <p className={styles['no-post']}>There are no recipes!</p>
       )}

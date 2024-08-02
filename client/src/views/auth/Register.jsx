@@ -77,9 +77,11 @@ const Register = () => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
   const handleUpload = (e) => {
+    const file = e.target.files[0];
+    console.log(e.target.files);
     setInput({
       ...input,
-      profilePicture: URL.createObjectURL(e.target.files[0]),
+      profilePicture: URL.createObjectURL(file),
     });
   };
 

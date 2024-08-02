@@ -1,13 +1,32 @@
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
+
 import avatar from '../assets/user.png';
 import styles from './UserDetails.module.css';
 
 const UserDetails = () => {
+  const { id } = useParams();
   const username = localStorage.getItem('username');
   const userId = localStorage.getItem('userId');
   const email = localStorage.getItem('email');
-  const profilePicture = localStorage.getItem('profilePicture') || null;
+  const profilePicture = localStorage.getItem('profilePicture');
 
-  const myRecipes = () => {};
+  const [numberOfRecipes, setNumberOfRecipes] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await fetch(`http://localhost:3030/jsonstore/recipes`);
+        const data = await response.json();
+        const result = Object.values(data);
+
+        const myRecipes = result.filter((recipe) => recipe.owner._id === id);
+        setNumberOfRecipes(myRecipes);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
 
   return (
     <>
@@ -29,7 +48,7 @@ const UserDetails = () => {
         <div>User Name: {username}</div>
         <div>User Email: {email}</div>
         <div>Last Activity: {new Date().toLocaleString()}</div>
-        <div>My Recipes: 0</div>
+        <div>My Recipes: {numberOfRecipes.length}</div>
       </div>
     </>
   );
