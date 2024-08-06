@@ -95,7 +95,7 @@ const Register = () => {
               style={errors.username ? { border: '2px solid red' } : {}}
               type='text'
               name='username'
-              placeholder='username'
+              placeholder='username *'
               onChange={handleChange}
               defaultValue={input.username}
             />
@@ -107,7 +107,7 @@ const Register = () => {
               style={errors.email ? { border: '2px solid red' } : {}}
               type='email'
               name='email'
-              placeholder='email'
+              placeholder='email *'
               onChange={handleChange}
               defaultValue={input.email}
             />
@@ -118,7 +118,7 @@ const Register = () => {
               style={errors.password ? { border: '2px solid red' } : {}}
               type='password'
               name='password'
-              placeholder='password'
+              placeholder='password *'
               autoComplete='on'
               onChange={handleChange}
               defaultValue={input.password}

@@ -48,7 +48,7 @@ const UserDetails = () => {
         <div>User Name: {username}</div>
         <div>User Email: {email}</div>
         <div>Last Activity: {new Date().toLocaleString()}</div>
-        <div>My Recipes: {numberOfRecipes.length}</div>
+        <div>My published recipes: {numberOfRecipes.length}</div>
       </div>
     </>
   );

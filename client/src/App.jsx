@@ -14,25 +14,8 @@ import CreateRecipe from './components/recipes/CreateRecipe.jsx';
 import EditRecipe from './components/recipes/EditRecipe.jsx';
 import DeleteRecipe from './components/recipes/DeleteRecipe.jsx';
 import ProtectedRoutes from './util/ProtectedRoutes.jsx';
+import UserGuard from './util/UserGuard.jsx';
 import AuthContext from './context/auth-context.js';
-
-// const router = createBrowserRouter(
-//   createRoutesFromElements(
-//     <Route path='/' element={<MainLayout />}>
-//       <Route index element={<HomeView />} />
-//       <Route path='about' element={<AboutView />} />
-//       <Route path='catalog' element={<CatalogView />} />
-//       <Route path='catalog/:id' element={<Details />} />
-//       <Route path='register' element={<Register />} />
-//       <Route path='login' element={<Login />} />
-//       <Route path='edit/:id' element={<EditRecipe />} />
-//       <Route path='create' element={<CreateRecipe />} />
-//       <Route path='delete/:id' element={<DeleteRecipe />} />
-
-//       <Route path='*' element={<NotFound />} />
-//     </Route>
-//   )
-// );
 
 const App = () => {
   const auth = useContext(AuthContext);
@@ -44,15 +27,18 @@ const App = () => {
           <Route path='serach' element={<SearchView />} />
           <Route path='catalog' element={<CatalogView />} />
           <Route path='catalog/:id' element={<Details />} />
-          {/* Rotected routes  only for logged in users */}
+          {/* Protected routes  only for logged in users */}
           <Route element={<ProtectedRoutes />}>
             <Route path='create' element={<CreateRecipe />} />
             <Route path='edit/:id' element={<EditRecipe />} />
             <Route path='delete/:id' element={<DeleteRecipe />} />
             <Route path='user/:id' element={<UserDetails />} />
           </Route>
-          <Route path='register' element={<Register />} />
-          <Route path='login' element={<Login />} />
+          {/* User routes, only for logged in users. Prevent routing to Login and Register pages when is logged in */}
+          <Route element={<UserGuard />}>
+            <Route path='register' element={<Register />} />
+            <Route path='login' element={<Login />} />
+          </Route>
 
           <Route path='*' element={<NotFound />} />
         </Route>
