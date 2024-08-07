@@ -1,3 +1,9 @@
+## Sample recipes catalog.
+
+ -There is a public part where the user can browse the catalog,
+search for recipes in it, access the details - without seeing buttons in them.
+
+
 ## Development server
 
 Run first server in Server folder
