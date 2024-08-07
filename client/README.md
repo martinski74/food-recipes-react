@@ -1,6 +1,6 @@
 ## Sample recipes catalog.
 
- -There is a public part where the user can browse the catalog,
+ - There is a public part where the user can browse the catalog,
 search for recipes in it, access the details - without seeing buttons in them.
 
 - Every logged in user can create recipes, if he is an author he can edit and delete recipes.
