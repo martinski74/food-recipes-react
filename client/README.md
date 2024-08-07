@@ -7,7 +7,7 @@ search for recipes in it, access the details - without seeing buttons in them.
 
 - Any logged-in user who is not an author cannot edit or delete, but can recommend recipes
 
-- During registration you can upload a photo which is saved in the User Information tab.
+- During registration you can upload your photo which is saved in the User Information tab.
 
 
 ## Development server
