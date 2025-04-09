@@ -18,7 +18,7 @@ const Details = () => {
       setLoading(true);
       try {
         const response = await fetch(
-          'http://localhost:3030/jsonstore/recipes/' + id
+          `/api/jsonstore/recipes/${id}`
         );
         const data = await response.json();
         setRecipe(data);
@@ -41,7 +41,7 @@ const Details = () => {
       recommendList: [...recipe.recommendList, localStorage.getItem('userId')],
     };
     try {
-      const res = await fetch('http://localhost:3030/jsonstore/recipes/' + id, {
+      const res = await fetch('/api/jsonstore/recipes/' + id, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

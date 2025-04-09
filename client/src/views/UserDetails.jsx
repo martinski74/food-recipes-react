@@ -16,7 +16,7 @@ const UserDetails = () => {
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch(`http://localhost:3030/jsonstore/recipes`);
+        const response = await fetch(`api/jsonstore/recipes`);
         const data = await response.json();
         const result = Object.values(data);
 
@@ -48,7 +48,7 @@ const UserDetails = () => {
         <div>User Name: {username}</div>
         <div>User Email: {email}</div>
         <div>Last Activity: {new Date().toLocaleString()}</div>
-        <div>My published recipes: {numberOfRecipes.length}</div>
+        <div>{username}'s published recipes: {numberOfRecipes.length}</div>
       </div>
     </>
   );

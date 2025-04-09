@@ -31,7 +31,7 @@ const DeleteRecipe = () => {
   const handleDelete = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:3030/jsonstore/recipes/' + id, {
+      const res = await fetch('api/jsonstore/recipes/' + id, {
         method: 'DELETE',
       });
 

@@ -17,7 +17,7 @@ const EditRecipe = () => {
     const fetchRecipe = async () => {
       try {
         const response = await fetch(
-          'http://localhost:3030/jsonstore/recipes/' + id
+          'api/jsonstore/recipes/' + id
         );
         const data = await response.json();
         setInput(data);

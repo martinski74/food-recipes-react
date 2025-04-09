@@ -37,7 +37,7 @@ const CreateRecipe = () => {
         owner: { _id: userId },
         createdAt: new Date().toISOString(),
       };
-      const res = await fetch('http://localhost:3030/jsonstore/recipes', {
+      const res = await fetch('api/jsonstore/recipes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

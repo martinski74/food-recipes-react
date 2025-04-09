@@ -17,7 +17,7 @@ const Navigation = () => {
       return;
     }
     try {
-      const res = await fetch('http://localhost:3030/users/logout', {
+      const res = await fetch('api/users/logout', {
         method: 'GET',
         headers: {
           'X-Authorization': token,
