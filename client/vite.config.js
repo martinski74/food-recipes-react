@@ -7,10 +7,11 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:3030',
-        changeOrigin: true,
+        target: 'https://food-recipes-oe00.onrender.com',
+        changeOrigin: false,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
     },
   },
 })
+
