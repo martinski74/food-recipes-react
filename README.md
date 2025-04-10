@@ -1,2 +1,2 @@
 # Food-recipes
-### Open app here - www.food-recipes-client.netlify.app
+### Open app here - food-recipes-client.netlify.app
