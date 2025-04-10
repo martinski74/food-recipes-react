@@ -18,7 +18,7 @@ const Details = () => {
       setLoading(true);
       try {
         const response = await fetch(
-          `/api/jsonstore/recipes/${id}`
+          `https://food-recipes-oe00.onrender.com/jsonstore/recipes/${id}`
         );
         const data = await response.json();
         setRecipe(data);

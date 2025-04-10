@@ -17,7 +17,7 @@ const Navigation = () => {
       return;
     }
     try {
-      const res = await fetch('api/users/logout', {
+      const res = await fetch('https://food-recipes-oe00.onrender.com/users/logout', {
         method: 'GET',
         headers: {
           'X-Authorization': token,
