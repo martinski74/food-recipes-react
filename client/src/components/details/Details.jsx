@@ -41,7 +41,7 @@ const Details = () => {
       recommendList: [...recipe.recommendList, localStorage.getItem('userId')],
     };
     try {
-      const res = await fetch('/api/jsonstore/recipes/' + id, {
+      const res = await fetch('https://food-recipes-oe00.onrender.com/jsonstore/recipes/' + id, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

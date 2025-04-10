@@ -37,7 +37,7 @@ const CreateRecipe = () => {
         owner: { _id: userId },
         createdAt: new Date().toISOString(),
       };
-      const res = await fetch('api/jsonstore/recipes', {
+      const res = await fetch('https://food-recipes-oe00.onrender.com/jsonstore/recipes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -17,7 +17,7 @@ const EditRecipe = () => {
     const fetchRecipe = async () => {
       try {
         const response = await fetch(
-          'api/jsonstore/recipes/' + id
+          'https://food-recipes-oe00.onrender.com/jsonstore/recipes/' + id
         );
         const data = await response.json();
         setInput(data);
@@ -31,7 +31,7 @@ const EditRecipe = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:3030/jsonstore/recipes/' + id, {
+      const res = await fetch('https://food-recipes-oe00.onrender.com/jsonstore/recipes/' + id, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

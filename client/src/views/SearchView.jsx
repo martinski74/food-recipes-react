@@ -8,7 +8,7 @@ const SearchView = () => {
   const fechRecipes = async () => {
     setLoading(true);
     try {
-      const response = await fetch('api/jsonstore/recipes');
+      const response = await fetch('https://food-recipes-oe00.onrender.com/jsonstore/recipes');
       const data = await response.json();
       const result = Object.values(data);
       setRecipes(result);

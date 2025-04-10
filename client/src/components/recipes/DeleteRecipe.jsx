@@ -31,7 +31,7 @@ const DeleteRecipe = () => {
   const handleDelete = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('api/jsonstore/recipes/' + id, {
+      const res = await fetch('https://food-recipes-oe00.onrender.com/jsonstore/recipes/' + id, {
         method: 'DELETE',
       });
 
