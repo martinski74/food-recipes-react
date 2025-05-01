@@ -1,26 +1,28 @@
 .login {
     margin-top: 10%;
+    padding: 1em;
 }
 
 .form {
-    background: #5b1f51;;
+    background: #5b1f51;
     max-width: 460px;
+    width: 90%;
     margin: auto;
     margin-top: 10px;
     padding: 45px;
     text-align: center;
     border-radius: 30px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.682), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-  }
-  
-  .form h2 {
+}
+
+.form h2 {
     margin-top: 0px;
     margin-bottom: 30px;
     font-size: 30px;
     color: white;
-  }
-  
-  .form input, textarea {
+}
+
+.form input, textarea {
     outline: 0;
     background: #f2f2f2;
     width: 90%;
@@ -33,10 +35,10 @@
     font-size: 14px;
     text-align: center;
     font-weight: bold;
-    font-family:Arial, Helvetica, sans-serif
-  }
-  
-  .form button {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.form button {
     text-transform: uppercase;
     font-weight: bold;
     outline: 0;
@@ -50,43 +52,70 @@
     -webkit-transition: all 0.3 ease;
     transition: all 0.3 ease;
     cursor: pointer;
-  }
-  .form button:hover,
-  .form button:active,
-  .form button:focus {
+}
+
+.form button:hover,
+.form button:active,
+.form button:focus {
     background: #e192e1;
-  }
-  
-  .form .register-form {
+}
+
+.form .register-form {
     display: none;
-  }
-  .container {
+}
+
+.container {
     position: relative;
     z-index: 1;
     max-width: 300px;
     margin: 0 auto;
-  }
-  .container:before,
-  .container:after {
+}
+
+.container:before,
+.container:after {
     content: "";
     display: block;
     clear: both;
-  }
-  
-  .form .message {
+}
+
+.form .message {
     margin: 15px 0 0;
     color: #b3b3b3;
     font-size: 17px;
-  }
-  .form .message a {
+}
+
+.form .message a {
     color: white;
     text-decoration: none;
-  }
-  .form .error {
+}
+
+.form .error {
     color: #ff0000;
     font-size: 16px;
-    /* background-color: #e0c4c4; */
     margin-top: -5px;
     margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+    .login {
+        margin-top: 5%;
+    }
     
-  }
+    .form {
+        padding: 25px;
+    }
+    
+    .form h2 {
+        font-size: 24px;
+    }
+    
+    .form input, textarea {
+        font-size: 12px;
+        height: 40px;
+    }
+    
+    .form button {
+        width: 80%;
+        font-size: 12px;
+    }
+}

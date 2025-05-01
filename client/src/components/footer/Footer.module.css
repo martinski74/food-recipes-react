@@ -9,3 +9,10 @@
    padding: 10px 0;
    font-size: larger;
 }
+
+@media (max-width: 768px) {
+    .footer {
+        font-size: medium;
+        padding: 5px 0;
+    }
+}
