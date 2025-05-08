@@ -23,13 +23,16 @@ const Login = () => {
       return;
     }
     try {
-      const response = await fetch('https://food-recipes-oe00.onrender.com/users/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(user),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_APP_URL}/users/login`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(user),
+        }
+      );
       const data = await response.json();
       if (data.code === 403) {
         toast.error(data.message);

@@ -37,13 +37,16 @@ const CreateRecipe = () => {
         owner: { _id: userId },
         createdAt: new Date().toISOString(),
       };
-      const res = await fetch('https://food-recipes-oe00.onrender.com/jsonstore/recipes', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_APP_URL}/jsonstore/recipes`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        }
+      );
       if (res.ok) {
         toast.success('Successfully created recipe!', { autoClose: 2000 });
         navigate('/catalog');

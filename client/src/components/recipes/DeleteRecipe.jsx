@@ -17,7 +17,7 @@ const DeleteRecipe = () => {
     const fetchRecipe = async () => {
       try {
         const response = await fetch(
-          'http://localhost:3030/jsonstore/recipes/' + id
+          `${import.meta.env.VITE_APP_URL}/jsonstore/recipes/` + id
         );
         const data = await response.json();
         setInput(data);
@@ -31,9 +31,12 @@ const DeleteRecipe = () => {
   const handleDelete = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('https://food-recipes-oe00.onrender.com/jsonstore/recipes/' + id, {
-        method: 'DELETE',
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_APP_URL}/jsonstore/recipes/` + id,
+        {
+          method: 'DELETE',
+        }
+      );
 
       if (res.ok) {
         toast.success('Successfully deleted recipe!', { autoClose: 2000 });

@@ -17,7 +17,7 @@ const EditRecipe = () => {
     const fetchRecipe = async () => {
       try {
         const response = await fetch(
-          'https://food-recipes-oe00.onrender.com/jsonstore/recipes/' + id
+          `${import.meta.env.VITE_APP_URL}/jsonstore/recipes/` + id
         );
         const data = await response.json();
         setInput(data);
@@ -31,13 +31,16 @@ const EditRecipe = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('https://food-recipes-oe00.onrender.com/jsonstore/recipes/' + id, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(input),
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_APP_URL}/jsonstore/recipes/` + id,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(input),
+        }
+      );
 
       if (res.ok) {
         toast.success('Successfully updated recipe!', { autoClose: 2000 });

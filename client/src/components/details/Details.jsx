@@ -18,7 +18,7 @@ const Details = () => {
       setLoading(true);
       try {
         const response = await fetch(
-          `https://food-recipes-oe00.onrender.com/jsonstore/recipes/${id}`
+          `${import.meta.env.VITE_APP_URL}/jsonstore/recipes/${id}`
         );
         const data = await response.json();
         setRecipe(data);
@@ -41,14 +41,17 @@ const Details = () => {
       recommendList: [...recipe.recommendList, localStorage.getItem('userId')],
     };
     try {
-      const res = await fetch('https://food-recipes-oe00.onrender.com/jsonstore/recipes/' + id, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Authorization': localStorage.getItem('token'),
-        },
-        body: JSON.stringify(updatedRecipe),
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_APP_URL}/jsonstore/recipes/` + id,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': localStorage.getItem('token'),
+          },
+          body: JSON.stringify(updatedRecipe),
+        }
+      );
       if (res.ok) {
         setRecipe((prevRecipe) => ({
           ...prevRecipe,

@@ -47,13 +47,16 @@ const Register = () => {
     }
 
     try {
-      const response = await fetch('https://food-recipes-oe00.onrender.com/users/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(input),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_APP_URL}/users/register`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(input),
+        }
+      );
 
       if (!response.ok && response.status == 409) {
         throw new Error('A user with the same email already exists');

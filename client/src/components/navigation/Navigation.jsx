@@ -17,7 +17,7 @@ const Navigation = () => {
       return;
     }
     try {
-      const res = await fetch('https://food-recipes-oe00.onrender.com/users/logout', {
+      const res = await fetch(`${import.meta.env.VITE_APP_URL}/users/logout`, {
         method: 'GET',
         headers: {
           'X-Authorization': token,
