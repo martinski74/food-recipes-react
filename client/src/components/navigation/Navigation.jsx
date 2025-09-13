@@ -53,7 +53,7 @@ const Navigation = () => {
           {auth.isLoggedIn && <NavLink to='/create'>Add Recipe</NavLink>}
           {auth.isLoggedIn && <span onClick={handleLogout}>Logout</span>}
           {auth.isLoggedIn && (
-            <NavLink to={`/user/${userId}`}>Welcome, {auth.user}</NavLink>
+            <NavLink to={`/user/${userId}`} className="welcome">Welcome, {auth.user}</NavLink>
           )}
 
           {/* <!-- Guest users --> */}

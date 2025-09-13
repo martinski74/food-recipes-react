@@ -35,18 +35,24 @@
 }
 
 main .last-added {
-    background-color: rgba(255, 255, 255, 0.333);
-    width: 350px;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    width: 400px;
     margin: 60px auto;
-    border-radius: 20px;
-    padding: 10px;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .last-added h4 {
     color: white;
     text-align: center;
-    margin-top: 0;
-    font-size: x-large;
+    margin: 0 0 20px 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .no-post {

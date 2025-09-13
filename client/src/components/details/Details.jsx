@@ -85,38 +85,70 @@ const Details = () => {
         ) : (
           <div className='content'>
             <article className='recipe-detail'>
-              <img src={recipe?.image} alt='Spaghetti Carbonara' />
+              <div className='recipe-image'>
+                <img src={recipe?.image} alt={recipe?.title} />
+              </div>
+              
+              <div className='recipe-content'>
+                <h2 className='recipe-title'>{recipe?.title}</h2>
+                <p className='recipe-description'>{recipe?.description}</p>
+                
+                <div className='recipe-stats'>
+                  <div className='stat'>
+                    <span className='stat-icon'>⏰</span>
+                    <span className='stat-value'>45 min</span>
+                    <span className='stat-label'>Cook Time</span>
+                  </div>
+                  <div className='stat'>
+                    <span className='stat-icon'>👥</span>
+                    <span className='stat-value'>4-6</span>
+                    <span className='stat-label'>Servings</span>
+                  </div>
+                  <div className='stat'>
+                    <span className='stat-icon'>❤️</span>
+                    <span className='stat-value'>{recipe?.recommendList?.length}</span>
+                    <span className='stat-label'>Recommends</span>
+                  </div>
+                </div>
 
-              <h2>{recipe?.title}</h2>
-              <p>{recipe?.description}</p>
-              <h3>-----------------------------------------------------</h3>
-              <h3>Ingredients:</h3>
-              <p>{recipe?.ingredients}</p>
+                <div className='recipe-ingredients'>
+                  <h3>📝 Ingredients</h3>
+                  <p>{recipe?.ingredients}</p>
+                </div>
 
-              <h3>-----------------------------------------------------</h3>
+                <div className='recipe-instructions'>
+                  <h3>👨‍🍳 Instructions</h3>
+                  <p>{recipe?.instructions}</p>
+                </div>
 
-              <h3>Instructions:</h3>
-              <p>{recipe?.instructions}</p>
+                <div className='recipe-meta'>
+                  <p className='created-at'>Created: {recipe?.createdAt?.slice(0, 10)}</p>
+                </div>
 
-              <p>Created at: {recipe?.createdAt?.slice(0, 10)} </p>
-              <h3>-----------------------------------------------------</h3>
-
-              <h3>People Who Recommend: {recipe?.recommendList?.length}</h3>
-              <div className='command'>
-                {auth.isLoggedIn && isAuthor && (
-                  <Link to={'/edit/' + id}>Edit</Link>
-                )}
-                {auth.isLoggedIn && isAuthor && (
-                  <Link to={'/delete/' + id}>Delete</Link>
-                )}
-
-                {hasRecommended && (
-                  <p>You've already recommended this recipe!</p>
-                )}
-
-                {!hasRecommended && !isAuthor && auth.isLoggedIn && (
-                  <span onClick={recommendRecipe}>Recommend</span>
-                )}
+                <div className='recipe-actions'>
+                  {auth.isLoggedIn && isAuthor && (
+                    <div className='author-actions'>
+                      <Link to={`/edit/${recipe._id}`} className='edit-btn'>✏️ Edit</Link>
+                      <Link to={`/delete/${recipe._id}`} className='delete-btn'>🗑️ Delete</Link>
+                    </div>
+                  )}
+                  {!hasRecommended && !isAuthor && auth.isLoggedIn && (
+                    <button
+                      onClick={recommendRecipe}
+                      className='recommend-btn'
+                    >
+                      🤍 Recommend
+                    </button>
+                  )}
+                  {hasRecommended && (
+                    <button
+                      className='recommend-btn recommended'
+                      disabled
+                    >
+                      ❤️ Recommended
+                    </button>
+                  )}
+                </div>
               </div>
             </article>
           </div>

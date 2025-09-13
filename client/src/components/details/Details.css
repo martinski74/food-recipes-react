@@ -1,129 +1,255 @@
 .content {
-  padding-bottom: 3em;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 20px;
 }
 
 .recipe-detail {
-    background: white;
-    padding: 2em;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    max-width: 800px;
-    margin: 2em auto 0 auto;
-    text-align: center;
-    
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  margin: 20px;
+}
+
+.recipe-image {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+
+.recipe-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recipe-content {
+  padding: 2rem;
+}
+
+.recipe-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1.25rem;
+  padding: 0 1rem;
+}
+
+.recipe-description {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.recipe-stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 1.25rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin: 0 1rem 2rem 1rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+
+.stat-icon {
+  font-size: 1.25rem;
+}
+
+.stat-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.recipe-ingredients,
+.recipe-instructions {
+  margin: 0 1rem 2rem 1rem;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.recipe-ingredients h3,
+.recipe-instructions h3 {
+  font-size: 1.25rem;
+  color: #2c3e50;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.recipe-ingredients p,
+.recipe-instructions p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #4a4a4a;
+  white-space: pre-line;
+  padding: 0.5rem;
+}
+
+.recipe-meta {
+  margin: 0 1rem 1.5rem 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.created-at {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.recipe-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.author-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.edit-btn,
+.delete-btn,
+.recommend-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.edit-btn {
+  background-color: #3498db;
+  color: white;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.recommend-btn {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.recommend-btn.recommended {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+.edit-btn:hover {
+  background-color: #2980b9;
+  transform: translateY(-1px);
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+  transform: translateY(-1px);
+}
+
+.recommend-btn:hover:not(.recommended) {
+  background-color: #27ae60;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .recipe-stats {
+    flex-direction: column;
+    gap: 1rem;
   }
   
-  .recipe-detail:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  .stat {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .recipe-actions {
+    flex-direction: column;
+  }
+  
+  .author-actions {
+    width: 100%;
+  }
+  
+  .edit-btn,
+  .delete-btn,
+  .recommend-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.loader-details {
+  position: absolute;
+  z-index: 55;
+  margin-left: 50%;
+  margin-top: 150px;
+}
+
+@media (max-width: 768px) {
+  .recipe-detail {
+    padding: 1em;
+    margin: 1em;
   }
   
   .recipe-detail img {
-    width: 45%;
-    min-width: 250px;
-    border-radius: 8px;
-    margin-bottom: 1em;
-    transition: transform 0.3s;
-    float: left;
-    margin-right: 20px;
-  }
-  
-  .recipe-detail:hover img {
-    transform: scale(1.05);
+    width: 100%;
+    float: none;
+    margin-right: 0;
   }
   
   .recipe-detail h2 {
-    background-color: #5b1f51;
-    color: white;
-    padding: 0.5em;
-    border-radius: 4px;
-    font-size: 1.5em;
-    margin-bottom: 1em;
-    display: inline-block;
-    max-width: 300px;
-  }
-  
-  .recipe-detail h3 {
-    color: #2c3e50;
-    margin-top: 1em;
     font-size: 1.2em;
-    font-weight: 700;
   }
   
-  .recipe-detail ul,
-  .recipe-detail ol {
-    text-align: left;
-    margin: 1em 0;
-    padding: 0 1em;
-    color: #555;
+  .recipe-actions {
+    flex-direction: column;
   }
   
-  .recipe-detail ul li,
-  .recipe-detail ol li {
-    margin-bottom: 0.5em;
+  .author-actions {
+    width: 100%;
   }
   
-  .command {
-    display: flex;
+  .edit-btn,
+  .delete-btn,
+  .recommend-btn {
+    width: 100%;
     justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1em;
   }
-  
-  .command a,
-  .command span,
-  .command p {
-    background-color: #db34a2;
-    color: white;
-    padding: 0.5em 1em;
-    text-decoration: none;
-    border-radius: 4px;
-    display: inline-block;
-    transition: background 0.3s, transform 0.3s;
-    font-weight: 700;
-    margin: 0.5em;
-  }
-  
-  .command span:hover,
-  .command a:hover {
-    background-color: #b1177d;
-    transform: scale(1.05);
-    cursor: pointer;
-  }
-  
-  .loader-details{
-    position: absolute;
-    z-index: 55;
-    margin-left: 50%;
-    margin-top: 150px;
-  }
-
-  @media (max-width: 768px) {
-    .recipe-detail {
-        padding: 1em;
-        margin: 1em;
-    }
-    
-    .recipe-detail img {
-        width: 100%;
-        float: none;
-        margin-right: 0;
-    }
-    
-    .recipe-detail h2 {
-        font-size: 1.2em;
-    }
-    
-    .command {
-        flex-direction: column;
-    }
-    
-    .command a,
-    .command span,
-    .command p {
-        width: 100%;
-        text-align: center;
-    }
-  }
+}
