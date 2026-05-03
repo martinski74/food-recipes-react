@@ -1,3 +1,3 @@
 # Food-recipes
 
-[Demo](https://food-recipes-react.martin-dobr45.workers.dev)
+[Demo](https://food-recipes-react.pages.dev)
