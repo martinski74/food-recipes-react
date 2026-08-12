@@ -2,15 +2,14 @@
 
 ## Sample recipes catalog.
 
- - There is a public part where the user can browse the catalog,
-search for recipes in it, access the details - without seeing buttons in them.
+- There is a public part where the user can browse the catalog,
+  search for recipes in it, access the details - without seeing buttons in them.
 
 - Every logged in user can create recipes, if he is an author he can edit and delete recipes.
 
 - Any logged-in user who is not an author cannot edit or delete, but can recommend recipes
 
 - During registration you can upload your photo which is saved in the User Information tab.
-
 
 ## Development server
 
@@ -27,6 +26,7 @@ npm install
 ```
 npm run dev
 ```
+
 Navigate to ` http://localhost:5173/`. The app will automatically reload if you change any of the source files.
 
 ### Compiles and minifies for production
@@ -35,3 +35,4 @@ Navigate to ` http://localhost:5173/`. The app will automatically reload if you 
 npm run build
 ```
 
+[Demo](https://food-recipes-react.pages.dev)
