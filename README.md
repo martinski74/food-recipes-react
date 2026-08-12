@@ -35,5 +35,3 @@ Navigate to ` http://localhost:5173/`. The app will automatically reload if you 
 npm run build
 ```
 
-
-[Demo](https://food-recipes-react.pages.dev)
